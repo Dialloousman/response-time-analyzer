@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
   ReferenceLine
 } from 'recharts'
-import type { ResponseTimeChartProps } from '@/types'
+import type { ResponseTimeChartProps } from '@/types/index'
 import { colors } from '@/styles/colors'
 
 

@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import type { LLMResponse } from "@/types";
+import type { LLMResponse } from "@/types/index";
 import {
   parseUploadedData,
   validateResponseData,

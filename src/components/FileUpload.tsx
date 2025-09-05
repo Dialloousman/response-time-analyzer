@@ -1,5 +1,5 @@
 import { useDropzone } from 'react-dropzone'
-import type { FileUploadProps } from '@/types'
+import type { FileUploadProps } from '@/types/index'
 import { useFileUpload } from '@/hooks/useFileUpload'
 import { useAppContext } from '@/context/AppContext'
 

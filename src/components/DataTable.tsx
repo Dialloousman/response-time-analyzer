@@ -1,6 +1,6 @@
 import { DataGrid } from '@mui/x-data-grid'
 import type { GridColDef } from '@mui/x-data-grid'
-import type { DataTableProps } from '@/types'
+import type { DataTableProps } from '@/types/index'
 import { colors } from '@/styles/colors'
 
 export function DataTable({ data, selectedItems, onSelectionChange }: DataTableProps) {

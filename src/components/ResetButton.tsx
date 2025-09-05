@@ -1,4 +1,4 @@
-import type { ResetButtonProps } from '@/types'
+import type { ResetButtonProps } from '@/types/index'
 
 export function ResetButton({ onReset, disabled = false }: ResetButtonProps) {
   return (

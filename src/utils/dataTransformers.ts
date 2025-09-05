@@ -1,4 +1,9 @@
-import { LLMResponse, ChartDataPoint, TableRow, MockDataFile } from "@/types";
+import type {
+  LLMResponse,
+  ChartDataPoint,
+  TableRow,
+  MockDataFile,
+} from "@/types/index";
 
 export const parseUploadedData = (jsonString: string): LLMResponse[] => {
   try {
