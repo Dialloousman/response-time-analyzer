@@ -215,6 +215,8 @@ This tool is designed for individual developer use. If you find bugs or have fea
 5. I8n.
 6. Styling.
 7. Optimized/Simplified date range handling and selection.
+8. Local storage persistence.
+9. User profile and LLM capture and data persistence.
 
 ## 📄 License
 
