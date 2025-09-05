@@ -1,10 +1,11 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useEffect } from "react";
 import type { ReactNode } from "react";
 import type { AppState, AppContextType, LLMResponse } from "@/types/index";
 import {
   transformToChartData,
   transformToTableData,
 } from "@/utils/dataTransformers";
+import { stubData } from "@/data/stubData";
 
 const initialState: AppState = {
   responses: [],
@@ -63,6 +64,11 @@ interface AppProviderProps {
 
 export function AppProvider({ children }: AppProviderProps) {
   const [state, dispatch] = useReducer(appReducer, initialState);
+
+  // Load stub data on mount for testing
+  useEffect(() => {
+    dispatch({ type: "UPLOAD_DATA", payload: stubData.responses });
+  }, []);
 
   const uploadData = (data: LLMResponse[]) => {
     dispatch({ type: "UPLOAD_DATA", payload: data });
