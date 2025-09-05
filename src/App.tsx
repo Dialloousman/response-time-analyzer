@@ -1,34 +1,91 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { AppProvider, useAppContext } from '@/context/AppContext'
+import { FileUpload } from '@/components/FileUpload'
+import { ResponseTimeChart } from '@/components/ResponseTimeChart'
+import { DataTable } from '@/components/DataTable'
+import { ResetButton } from '@/components/ResetButton'
+import { ErrorBoundary } from '@/components/ErrorBoundary'
+import { useChartSync } from '@/hooks/useChartSync'
 
-function App() {
-  const [count, setCount] = useState(0)
+function AppContent() {
+  const { state, uploadData, resetData } = useAppContext()
+  const { selectedItems, handleChartSelection, handleTableSelection } = useChartSync()
+
+  if (!state.hasData) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <FileUpload 
+          onFileUpload={uploadData}
+          isLoading={state.isLoading}
+          error={state.error}
+        />
+      </div>
+    )
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="min-h-screen bg-gray-50">
+      <div className="flex h-screen">
+        {/* Left Pane - File Upload (collapsed when data exists) */}
+        <div className="w-80 bg-white border-r border-gray-200 flex-shrink-0">
+          <FileUpload 
+            onFileUpload={uploadData}
+            isLoading={state.isLoading}
+            error={state.error}
+          />
+        </div>
+
+        {/* Right Pane - Visualization */}
+        <div className="flex-1 flex flex-col">
+          {/* Header with Reset Button */}
+          <div className="bg-white border-b border-gray-200 p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <h1 className="text-2xl font-bold text-gray-900">
+                  Response Time Analysis
+                </h1>
+                <p className="text-sm text-gray-600 mt-1">
+                  Analyzing {state.responses.length} LLM responses
+                </p>
+              </div>
+              <ResetButton 
+                onReset={resetData}
+                disabled={state.isLoading}
+              />
+            </div>
+          </div>
+
+          {/* Chart Section */}
+          <div className="flex-1 p-4">
+            <div className="h-80 mb-4">
+              <ResponseTimeChart
+                data={state.chartData}
+                selectedItems={selectedItems}
+                onItemSelect={handleChartSelection}
+              />
+            </div>
+
+            {/* Table Section */}
+            <div className="h-96">
+              <DataTable
+                data={state.tableData}
+                selectedItems={selectedItems}
+                onSelectionChange={handleTableSelection}
+              />
+            </div>
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
+  )
+}
+
+function App() {
+  return (
+    <ErrorBoundary>
+      <AppProvider>
+        <AppContent />
+      </AppProvider>
+    </ErrorBoundary>
   )
 }
 

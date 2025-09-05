@@ -1,0 +1,82 @@
+[
+  {
+    "id": "req_001",
+    "timestamp": "2024-01-15T10:00:00Z",
+    "responseTime": 245,
+    "model": "gpt-4",
+    "tokens": 150,
+    "status": "success"
+  },
+  {
+    "id": "req_002",
+    "timestamp": "2024-01-15T10:01:00Z",
+    "responseTime": 320,
+    "model": "gpt-4",
+    "tokens": 220,
+    "status": "success"
+  },
+  {
+    "id": "req_003",
+    "timestamp": "2024-01-15T10:02:00Z",
+    "responseTime": 180,
+    "model": "gpt-3.5-turbo",
+    "tokens": 95,
+    "status": "success"
+  },
+  {
+    "id": "req_004",
+    "timestamp": "2024-01-15T10:03:00Z",
+    "responseTime": 1200,
+    "model": "gpt-4",
+    "tokens": 450,
+    "status": "success"
+  },
+  {
+    "id": "req_005",
+    "timestamp": "2024-01-15T10:04:00Z",
+    "responseTime": 290,
+    "model": "gpt-3.5-turbo",
+    "tokens": 180,
+    "status": "success"
+  },
+  {
+    "id": "req_006",
+    "timestamp": "2024-01-15T10:05:00Z",
+    "responseTime": 410,
+    "model": "gpt-4",
+    "tokens": 300,
+    "status": "success"
+  },
+  {
+    "id": "req_007",
+    "timestamp": "2024-01-15T10:06:00Z",
+    "responseTime": 155,
+    "model": "gpt-3.5-turbo",
+    "tokens": 120,
+    "status": "success"
+  },
+  {
+    "id": "req_008",
+    "timestamp": "2024-01-15T10:07:00Z",
+    "responseTime": 2500,
+    "model": "gpt-4",
+    "tokens": 800,
+    "status": "error"
+  },
+  {
+    "id": "req_009",
+    "timestamp": "2024-01-15T10:08:00Z",
+    "responseTime": 340,
+    "model": "gpt-3.5-turbo",
+    "tokens": 210,
+    "status": "success"
+  },
+  {
+    "id": "req_010",
+    "timestamp": "2024-01-15T10:09:00Z",
+    "responseTime": 280,
+    "model": "gpt-4",
+    "tokens": 190,
+    "status": "success"
+  }
+]
