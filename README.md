@@ -2,8 +2,6 @@
 
 A powerful debugging and observability tool for individual developers working with Large Language Models (LLMs). Quickly identify performance bottlenecks, deployment issues, and response time anomalies in your LLM applications.
 
-![LLM Response Time Analyzer Screenshot](./docs/screenshot.png)
-
 ## 🎯 Perfect for Debugging Scenarios
 
 **Scenario**: Your customers suddenly complain that your LLM-powered app is responding slower than usual.
