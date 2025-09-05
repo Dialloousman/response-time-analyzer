@@ -28,13 +28,11 @@ Based on HoneyHive take-home requirements with focus on code quality, performanc
 - [x] 1.4 Set up TypeScript configuration with path aliases
 - [x] 1.5 Configure Vite for path resolution
 - [x] 1.6 Set up basic project structure (components/, hooks/, context/, types/, utils/, **tests**/, data/)
-- [x] 1.7 Add mock data file (llm_responses.json) to data/ directory
 
 ### Phase 2: Type Definitions & Data Models
 
 - [x] 2.1 Create TypeScript interfaces for response data structure
 - [x] 2.2 Define context types for state management
-- [ ] 2.3 Create sample data factory for testing
 - [x] 2.4 Define component prop types
 
 ### Phase 3: State Management & Custom Hooks
