@@ -14,6 +14,12 @@ A powerful debugging and observability tool for individual developers working wi
 - **Model comparison**: See which models or versions are causing issues
 - **Detailed metrics**: Response times, costs, success rates, and token usage
 
+  
+
+Uploading project.mov…
+
+
+
 ## 🚀 Quick Start
 
 ### Prerequisites
