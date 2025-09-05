@@ -206,7 +206,7 @@ This tool is designed for individual developer use. If you find bugs or have fea
 3. Make your changes
 4. Submit a pull request
 
-## 🙏🏽 Improvement To Come & Future Considerations
+## 🙏🏽 Improvements to Come & Future Considerations
 
 1. E2E Testing - Cypress, Playwright.
 2. Unit Testing.
