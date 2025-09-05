@@ -9,13 +9,23 @@ import { useChartData } from "@/hooks/useChartData";
 import { useTableData } from "@/hooks/useTableData";
 
 function AppContent() {
-  const { responses, isLoading, error, hasData, uploadData, resetData, setError, setLoading } = useFileData();
+  const {
+    responses,
+    isLoading,
+    error,
+    hasData,
+    uploadData,
+    resetData,
+    setError,
+    setLoading,
+  } = useFileData();
   const chartData = useChartData(responses);
   const tableData = useTableData(responses);
-  const { selectedItems, handleChartSelection, handleTableSelection } = useChartSync();
+  const { selectedItems, handleChartSelection, handleTableSelection } =
+    useChartSync();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50  w-full">
       <div className="flex h-screen">
         {/* Left Panel - Upload */}
         <div className="w-96 bg-white border-r border-gray-200 flex-shrink-0">
@@ -29,7 +39,7 @@ function AppContent() {
         </div>
 
         {/* Right Panel - Chart and Table */}
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col overflow-auto">
           {/* Header with Reset Button */}
           {hasData && (
             <div className="bg-white border-b border-gray-200 p-4 flex-shrink-0">
@@ -59,7 +69,7 @@ function AppContent() {
               </div>
 
               {/* Table Section - Bottom Half */}
-              <div className="flex-1 min-h-0">
+              <div className="flex-1 ">
                 {tableData && tableData.length > 0 ? (
                   <DataTable
                     data={tableData}
