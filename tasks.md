@@ -2,7 +2,11 @@
 
 ## Project Overview
 
-Building a React application with Vite + TypeScript that visualizes LLM response time data with a split-pane UI featuring file upload, interactive charts, and data tables.
+Building a React application with Vite + TypeScript that visualizes LLM response time data with a two-pane UI:
+- **Left Pane**: Data upload page with drag-and-drop JSON file upload
+- **Right Pane**: Data visualization page with chart (top) and data grid (bottom) + reset functionality
+
+Based on HoneyHive take-home requirements with focus on code quality, performance with 1000+ responses, and clean UX.
 
 ## Tech Stack
 
@@ -17,12 +21,13 @@ Building a React application with Vite + TypeScript that visualizes LLM response
 
 ### Phase 1: Project Setup & Foundation
 
-- [ ] 1.1 Initialize Vite + React + TypeScript project
+- [x] 1.1 Initialize Vite + React + TypeScript project
 - [ ] 1.2 Install and configure Tailwind CSS
 - [ ] 1.3 Install core dependencies (Recharts, MUI DataGrid, react-dropzone)
 - [ ] 1.4 Set up TypeScript configuration with path aliases
 - [ ] 1.5 Configure Vite for path resolution
-- [ ] 1.6 Set up basic project structure (components/, hooks/, context/, types/, utils/, **tests**/, data/)
+- [x] 1.6 Set up basic project structure (components/, hooks/, context/, types/, utils/, **tests**/, data/)
+- [ ] 1.7 Add mock data file (llm_responses.json) to data/ directory
 
 ### Phase 2: Type Definitions & Data Models
 
@@ -41,11 +46,12 @@ Building a React application with Vite + TypeScript that visualizes LLM response
 
 ### Phase 4: Core Components
 
-- [ ] 4.1 Create FileUpload component (drag-and-drop + manual selection)
-- [ ] 4.2 Create ResponseTimeChart component (Recharts line chart)
-- [ ] 4.3 Create DataTable component (MUI DataGrid)
-- [ ] 4.4 Create FilterControls component
-- [ ] 4.5 Create main App layout with split-pane design
+- [ ] 4.1 Create FileUpload component (drag-and-drop + manual selection) - Left Pane
+- [ ] 4.2 Create ResponseTimeChart component (Recharts line chart) - Right Pane Top
+- [ ] 4.3 Create DataTable component (MUI DataGrid) - Right Pane Bottom
+- [ ] 4.4 Create ResetButton component - Right Pane Top Right
+- [ ] 4.5 Create main App layout with two-pane design (left: upload, right: visualization)
+- [ ] 4.6 Create LoadingStates and ErrorBoundary components
 
 ### Phase 5: Data Transformation & Business Logic
 
@@ -77,9 +83,10 @@ Building a React application with Vite + TypeScript that visualizes LLM response
 - [ ] 8.1 Add comprehensive error boundaries
 - [ ] 8.2 Implement loading states and skeleton components
 - [ ] 8.3 Add accessibility improvements (ARIA labels, keyboard navigation)
-- [ ] 8.4 Create comprehensive README with usage instructions
-- [ ] 8.5 Add sample data files for demonstration
-- [ ] 8.6 Performance optimization for large datasets
+- [ ] 8.4 Create comprehensive README with setup instructions and approach explanation
+- [ ] 8.5 Document key decisions and assumptions made
+- [ ] 8.6 Performance optimization for large datasets (1000+ responses)
+- [ ] 8.7 Add "What I'd improve with more time" section to README
 
 ### Phase 9: Final Integration & Testing
 
@@ -91,20 +98,23 @@ Building a React application with Vite + TypeScript that visualizes LLM response
 
 ## Success Criteria
 
-- [ ] File upload works with drag-and-drop and manual selection
-- [ ] Chart displays response time data over time with proper scaling
-- [ ] Table shows all data with sorting and filtering capabilities
-- [ ] Chart and table selection are synchronized
-- [ ] Application handles large datasets (1000+ entries) smoothly
-- [ ] All components are properly tested with good coverage
-- [ ] Code follows separation of concerns (hooks for logic, components for presentation)
-- [ ] TypeScript types are comprehensive and accurate
-- [ ] UI is responsive and accessible
+- [ ] **Upload & Process Data**: Drag-and-drop JSON file upload works smoothly with 1000+ responses
+- [ ] **Visualize the Data**: One clear visualization (response times over time) with tooltips and labels
+- [ ] **Present Data Gracefully**: Clean data grid showing individual responses without layout breaks
+- [ ] **Refine Component Rendering**: Minimal re-renders, synchronized visualization and grid
+- [ ] **Code Quality**: Well-structured codebase with proper state management and library choices
+- [ ] **Performance**: Handles large datasets smoothly with optimized rendering
+- [ ] **Error Handling**: Proper error states and edge case handling
+- [ ] **UX Design**: Clean, intuitive interface matching the wireframe design
+- [ ] **Documentation**: Comprehensive README with setup, approach, and assumptions
 
 ## Notes
 
-- Focus on clean separation between data transformation (hooks) and presentation (components)
-- Ensure all business logic is testable through custom hooks
-- Use TypeScript strictly for better maintainability
-- Prioritize performance for large datasets
-- Follow React best practices for state management and component design
+- **UI Layout**: Two-pane design - Left: Data upload page, Right: Data visualization page (chart top, table bottom)
+- **Reset Functionality**: Reset button in top-right of visualization pane to upload different dataset
+- **Performance Focus**: Optimize for 1000+ responses with minimal re-renders
+- **Code Quality**: Think like a technical lead - what codebase would you want to inherit?
+- **Error States**: Consider loading states and error handling throughout
+- **Documentation**: Document key decisions and what you'd improve with more time
+- **Separation of Concerns**: Hooks for data transformation, components for presentation
+- **TypeScript**: Strict typing for better maintainability and developer experience
