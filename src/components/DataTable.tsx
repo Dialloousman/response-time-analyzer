@@ -17,10 +17,10 @@ export function DataTable({
   });
 
   // Early return if data is not ready
-  if (!data || !Array.isArray(data)) {
+  if (!data || !Array.isArray(data) || data.length === 0) {
     return (
       <div className="h-full bg-white rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
-        <p className="text-gray-500">Loading data...</p>
+        <p className="text-gray-500">No data to display</p>
       </div>
     );
   }
@@ -135,7 +135,7 @@ export function DataTable({
           rows={data}
           columns={columns}
           checkboxSelection
-          rowSelectionModel={selectedItems || []}
+          // rowSelectionModel={selectedItems ?? []}
           onRowSelectionModelChange={handleSelectionChange}
           disableRowSelectionOnClick={false}
           getRowHeight={() => "auto"}

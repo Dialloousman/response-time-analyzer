@@ -13,7 +13,7 @@ export function useChartSync() {
   }, [selectItems])
 
   return {
-    selectedItems: state.selectedItems,
+    selectedItems: state.selectedItems ?? [],
     handleChartSelection,
     handleTableSelection
   }

@@ -44,23 +44,29 @@ function AppContent() {
 
           {state.hasData ? (
             <div className="flex-1 flex flex-col p-4 gap-4">
-              {/* Chart Section - Top Half */}
-              <div className="flex-1 min-h-0">
-                <ResponseTimeChart
-                  data={state.chartData}
-                  selectedItems={selectedItems}
-                  onItemSelect={handleChartSelection}
-                />
-              </div>
+                        {/* Chart Section - Top Half */}
+          <div className="flex-1 min-h-0">
+            <ResponseTimeChart
+              data={state.chartData}
+              selectedItems={selectedItems}
+              onItemSelect={handleChartSelection}
+            />
+          </div>
 
-              {/* Table Section - Bottom Half */}
-              <div className="flex-1 min-h-0">
-                <DataTable
-                  data={state.tableData}
-                  selectedItems={selectedItems}
-                  onSelectionChange={handleTableSelection}
-                />
+          {/* Table Section - Bottom Half */}
+          <div className="flex-1 min-h-0">
+            {state.tableData && state.tableData.length > 0 ? (
+              <DataTable
+                data={state.tableData}
+                selectedItems={selectedItems}
+                onSelectionChange={handleTableSelection}
+              />
+            ) : (
+              <div className="h-full bg-white rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
+                <p className="text-gray-500">No data to display</p>
               </div>
+            )}
+          </div>
             </div>
           ) : (
             <div className="flex-1 flex items-center justify-center">
