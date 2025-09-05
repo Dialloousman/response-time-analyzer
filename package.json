@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.61.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.3.2",
     "@mui/x-data-grid": "^8.11.1",
     "react": "^19.1.1",
@@ -21,9 +23,11 @@
   "devDependencies": {
     "@eslint/js": "^9.33.0",
     "@tailwindcss/postcss": "^4.1.13",
+    "@tailwindcss/vite": "^4.1.13",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9.33.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",

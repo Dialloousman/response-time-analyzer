@@ -3,22 +3,29 @@ export interface LLMResponse {
   timestamp: string
   model: string
   prompt_tokens: number
-  completion_tokens: number
-  total_tokens: number
+  completion_tokens: number | null
+  total_tokens: number | null
   response_time_ms: number
   status: 'success' | 'error' | 'timeout'
   cost_usd: number
   temperature: number
   max_tokens: number
   prompt_template: string
-  output: string
+  output: string | null
   evaluation_metrics: {
     relevance_score: number
     factual_accuracy: number
     coherence_score: number
     response_quality: number
-  }
-  error: string | null
+  } | null
+  error: {
+    type: string
+    message: string
+  } | null
+}
+
+export interface MockDataFile {
+  responses: LLMResponse[]
 }
 
 export interface ChartDataPoint {
