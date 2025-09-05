@@ -206,6 +206,16 @@ This tool is designed for individual developer use. If you find bugs or have fea
 3. Make your changes
 4. Submit a pull request
 
+## 🙏🏽 Improvement To Come & Future Considerations
+
+1. E2E Testing - Cypress, Playwright.
+2. Unit Testing.
+3. Dark Mode.
+4. Further Accessibility Improvements
+5. I8n.
+6. Styling.
+7. Optimized/Simplified date range handling and selection.
+
 ## 📄 License
 
 MIT License - see LICENSE file for details.
