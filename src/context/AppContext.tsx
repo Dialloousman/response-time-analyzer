@@ -33,13 +33,11 @@ function appReducer(state: AppState, action: AppAction): AppState {
       return { ...state, error: action.payload };
 
     case "UPLOAD_DATA":
-      const chartData = transformToChartData(action.payload);
-      const tableData = transformToTableData(action.payload);
       return {
         ...state,
         responses: action.payload,
-        chartData,
-        tableData,
+        chartData: transformToChartData(action.payload),
+        tableData: transformToTableData(action.payload),
         hasData: action.payload.length > 0,
         selectedItems: [],
         error: null,
