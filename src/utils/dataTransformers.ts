@@ -5,6 +5,10 @@ import type {
   MockDataFile,
 } from "@/types/index";
 
+/**
+ * Parses uploaded JSON string into LLM response array.
+ * Validates file structure and handles parsing errors gracefully.
+ */
 export const parseUploadedData = (jsonString: string): LLMResponse[] => {
   try {
     const data: MockDataFile = JSON.parse(jsonString);
@@ -23,6 +27,10 @@ export const parseUploadedData = (jsonString: string): LLMResponse[] => {
   }
 };
 
+/**
+ * Transforms LLM responses into chart-ready data points.
+ * Sorts by timestamp and formats data for visualization.
+ */
 export const transformToChartData = (
   responses: LLMResponse[]
 ): ChartDataPoint[] => {
@@ -42,6 +50,10 @@ export const transformToChartData = (
     }));
 };
 
+/**
+ * Transforms LLM responses into table-ready row data.
+ * Sorts by timestamp and formats data for tabular display.
+ */
 export const transformToTableData = (responses: LLMResponse[]): TableRow[] => {
   return responses
     .sort(
@@ -60,6 +72,10 @@ export const transformToTableData = (responses: LLMResponse[]): TableRow[] => {
     }));
 };
 
+/**
+ * Validates that a response object matches the LLMResponse interface.
+ * Performs type checking and required field validation.
+ */
 export const validateResponseData = (
   response: any
 ): response is LLMResponse => {
@@ -75,6 +91,10 @@ export const validateResponseData = (
   );
 };
 
+/**
+ * Calculates comprehensive statistics from LLM response data.
+ * Provides counts, averages, and data range information.
+ */
 export const getDataStats = (responses: LLMResponse[]) => {
   if (responses.length === 0) {
     return {

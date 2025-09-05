@@ -6,10 +6,16 @@ import {
 } from "@/utils/dataTransformers";
 
 interface UseFileUploadResult {
+  /** Function to process uploaded file and return parsed data or error */
   handleFile: (file: File) => Promise<{ data?: LLMResponse[]; error?: string }>;
+  /** Function to validate if file type is supported */
   validateFileType: (file: File) => boolean;
 }
 
+/**
+ * Handles file upload processing with validation and error handling.
+ * Validates file types and parses JSON data into LLM response format.
+ */
 export function useFileUpload(): UseFileUploadResult {
   const validateFileType = useCallback((file: File): boolean => {
     return file.type === "application/json" || file.name.endsWith(".json");

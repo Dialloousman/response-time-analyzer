@@ -1,40 +1,50 @@
-import { useDropzone } from 'react-dropzone'
-import type { FileUploadProps } from '@/types/index'
-import { useFileUpload } from '@/hooks/useFileUpload'
+import { useDropzone } from "react-dropzone";
+import type { FileUploadProps } from "@/types/index";
+import { useFileUpload } from "@/hooks/useFileUpload";
 
-export function FileUpload({ onFileUpload, isLoading, error, setError, setLoading }: FileUploadProps) {
-  const { handleFile } = useFileUpload()
+/**
+ * Handles JSON file uploads with drag-and-drop functionality and validation.
+ * Processes uploaded LLM response data and provides user feedback during upload.
+ */
+export function FileUpload({
+  onFileUpload,
+  isLoading,
+  error,
+  setError,
+  setLoading,
+}: FileUploadProps) {
+  const { handleFile } = useFileUpload();
 
   const onDrop = async (acceptedFiles: File[]) => {
-    if (acceptedFiles.length === 0) return
+    if (acceptedFiles.length === 0) return;
 
-    const file = acceptedFiles[0]
-    setLoading(true)
-    setError(null)
+    const file = acceptedFiles[0];
+    setLoading(true);
+    setError(null);
 
     try {
-      const result = await handleFile(file)
-      
+      const result = await handleFile(file);
+
       if (result.error) {
-        setError(result.error)
+        setError(result.error);
       } else if (result.data) {
-        onFileUpload(result.data)
+        onFileUpload(result.data);
       }
     } catch (err) {
-      setError('Failed to process file')
+      setError("Failed to process file");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      'application/json': ['.json']
+      "application/json": [".json"],
     },
     multiple: false,
-    disabled: isLoading
-  })
+    disabled: isLoading,
+  });
 
   return (
     <div className="h-full flex flex-col p-6">
@@ -46,21 +56,22 @@ export function FileUpload({ onFileUpload, isLoading, error, setError, setLoadin
           Upload JSON file with LLM response data
         </p>
       </div>
-      
+
       <div className="flex-1 flex items-center justify-center">
         <div
           {...getRootProps()}
           className={`
             w-full border-2 border-dashed rounded-lg p-6 text-center transition-all duration-200 cursor-pointer
-            ${isDragActive 
-              ? 'border-blue-500 bg-blue-50' 
-              : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+            ${
+              isDragActive
+                ? "border-blue-500 bg-blue-50"
+                : "border-gray-300 hover:border-gray-400 hover:bg-gray-50"
             }
-            ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}
+            ${isLoading ? "opacity-50 cursor-not-allowed" : ""}
           `}
         >
           <input {...getInputProps()} />
-          
+
           <div className="space-y-3">
             <div className="text-gray-600">
               {isLoading ? (
@@ -72,12 +83,14 @@ export function FileUpload({ onFileUpload, isLoading, error, setError, setLoadin
                 <p className="text-sm">Drop your JSON file here...</p>
               ) : (
                 <div>
-                  <p className="text-sm font-medium mb-1">Drag & drop JSON file</p>
+                  <p className="text-sm font-medium mb-1">
+                    Drag & drop JSON file
+                  </p>
                   <p className="text-xs text-gray-500">or click to select</p>
                 </div>
               )}
             </div>
-            
+
             {!isLoading && (
               <div className="text-xs text-gray-400">
                 JSON files with LLM response data
@@ -92,11 +105,14 @@ export function FileUpload({ onFileUpload, isLoading, error, setError, setLoadin
           <p className="text-sm text-red-600">{error}</p>
         </div>
       )}
-      
+
       <div className="mt-4 text-xs text-gray-500 flex-shrink-0">
         <p className="mb-1">Expected format:</p>
-        <p>Array of response objects with id, timestamp, response_time_ms, model, etc.</p>
+        <p>
+          Array of response objects with id, timestamp, response_time_ms, model,
+          etc.
+        </p>
       </div>
     </div>
-  )
+  );
 }

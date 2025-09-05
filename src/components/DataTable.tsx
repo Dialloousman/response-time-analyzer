@@ -3,6 +3,10 @@ import type { GridColDef } from "@mui/x-data-grid";
 import type { DataTableProps } from "@/types/index";
 import { colors } from "@/styles/colors";
 
+/**
+ * Displays LLM response data in a sortable, filterable table with selection capabilities.
+ * Shows response details including timing, model, tokens, status, and cost information.
+ */
 export function DataTable({
   data,
   selectedItems,

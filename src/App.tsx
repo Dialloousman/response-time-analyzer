@@ -8,6 +8,10 @@ import { useFileData } from "@/hooks/useFileData";
 import { useChartData } from "@/hooks/useChartData";
 import { useTableData } from "@/hooks/useTableData";
 
+/**
+ * Main application content component that orchestrates data flow and UI layout.
+ * Manages file upload, chart display, and table interactions with synchronized selection.
+ */
 function AppContent() {
   const {
     responses,
@@ -101,6 +105,10 @@ function AppContent() {
   );
 }
 
+/**
+ * Root application component wrapped with error boundary for error handling.
+ * Provides the main application shell and error recovery capabilities.
+ */
 function App() {
   return (
     <ErrorBoundary>

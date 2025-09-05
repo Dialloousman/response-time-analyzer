@@ -12,6 +12,10 @@ import {
 import type { ResponseTimeChartProps } from "@/types/index";
 import { colors } from "@/styles/colors";
 
+/**
+ * Renders an interactive line chart showing response times over time.
+ * Supports data point selection and displays detailed tooltips on hover.
+ */
 export function ResponseTimeChart({
   data,
   selectedItems,

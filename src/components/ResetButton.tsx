@@ -1,5 +1,9 @@
-import type { ResetButtonProps } from '@/types/index'
+import type { ResetButtonProps } from "@/types/index";
 
+/**
+ * Provides a reset action button to clear current data and start over.
+ * Can be disabled during loading states to prevent user interaction.
+ */
 export function ResetButton({ onReset, disabled = false }: ResetButtonProps) {
   return (
     <button
@@ -7,9 +11,10 @@ export function ResetButton({ onReset, disabled = false }: ResetButtonProps) {
       disabled={disabled}
       className={`
         px-4 py-2 text-sm font-medium rounded-md border transition-colors duration-200
-        ${disabled
-          ? 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
-          : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'
+        ${
+          disabled
+            ? "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
+            : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         }
       `}
       title="Upload a different dataset"
@@ -32,5 +37,5 @@ export function ResetButton({ onReset, disabled = false }: ResetButtonProps) {
         <span>Reset</span>
       </div>
     </button>
-  )
+  );
 }
