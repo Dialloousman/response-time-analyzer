@@ -14,6 +14,14 @@ import { colors } from '@/styles/colors'
 
 
 export function ResponseTimeChart({ data, selectedItems, onItemSelect }: ResponseTimeChartProps) {
+  // Early return if data is not ready
+  if (!data || !Array.isArray(data)) {
+    return (
+      <div className="h-full bg-white rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
+        <p className="text-gray-500">Loading chart data...</p>
+      </div>
+    )
+  }
   const handleClick = (data: any) => {
     if (data && data.activePayload && data.activePayload[0]) {
       const clickedId = data.activePayload[0].payload.id
