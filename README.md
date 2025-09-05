@@ -7,22 +7,20 @@ A powerful debugging and observability tool for individual developers working wi
 **Scenario**: Your customers suddenly complain that your LLM-powered app is responding slower than usual.
 
 **Solution**: Upload your response data and immediately see:
+
 - **Timeline view**: Spot exactly when slowdowns started
-- **Performance spikes**: Identify problematic time windows  
+- **Performance spikes**: Identify problematic time windows
 - **Model comparison**: See which models or versions are causing issues
 - **Detailed metrics**: Response times, costs, success rates, and token usage
 
-  
-
 Uploading project.mov…
-
-
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
 Make sure you have installed:
+
 - **Node.js** (v18 or higher) - [Download here](https://nodejs.org/)
 - **npm** (comes with Node.js)
 
@@ -87,13 +85,15 @@ Your JSON file should contain an array of LLM responses with this structure:
 ```
 
 ### Required Fields
+
 - `id`: Unique identifier for the response
-- `timestamp`: ISO 8601 timestamp 
+- `timestamp`: ISO 8601 timestamp
 - `model`: LLM model name (e.g., "gpt-4", "claude-3")
 - `response_time_ms`: Response time in milliseconds
 - `status`: "success", "error", or "timeout"
 
 ### Optional Fields
+
 - `prompt_tokens`, `completion_tokens`, `total_tokens`: Token usage
 - `cost_usd`: Cost in USD
 - `temperature`, `max_tokens`: Model parameters
@@ -105,18 +105,21 @@ Your JSON file should contain an array of LLM responses with this structure:
 ## 🛠️ How to Use
 
 ### 1. Response Time Chart (Top Panel)
+
 - **Timeline view**: See response times over time
 - **Click data points**: Get detailed info for specific responses
 - **Spot patterns**: Identify performance degradation periods
 - **Compare models**: Different models show as different lines
 
 ### 2. Data Table (Bottom Panel)
+
 - **Sortable columns**: Click headers to sort by any metric
 - **Detailed view**: See all response metadata
 - **Filter & search**: Find specific responses quickly
 - **Bulk selection**: Select multiple responses for analysis
 
 ### 3. Interactive Features
+
 - **Synchronized selection**: Click chart points to highlight in table
 - **Real-time filtering**: Table updates based on chart selections
 - **Reset button**: Clear data and start over
@@ -130,16 +133,19 @@ Your JSON file should contain an array of LLM responses with this structure:
 **Step 2**: Upload the file to the analyzer
 
 **Step 3**: Look at the Response Time chart:
-- See response times jumped from 1s to 10s 
+
+- See response times jumped from 1s to 10s
 - Notice spikes correlate with your deployment time
 - Identify which model version is causing issues
 
 **Step 4**: Use the data table to:
+
 - Sort by response time to find worst performers
 - Check error rates for problematic periods
 - Analyze token usage patterns
 
 **Step 5**: Take action based on insights:
+
 - Rollback problematic deployment
 - Switch to better-performing model
 - Optimize prompts to reduce token usage
@@ -150,14 +156,15 @@ Built with modern React hooks for optimal performance:
 
 ```
 ├── useFileData()     # Raw data management
-├── useChartData()    # Chart transformations  
+├── useChartData()    # Chart transformations
 ├── useTableData()    # Table transformations
 └── useChartSync()    # Selection synchronization
 ```
 
 **Key Features**:
+
 - ✅ **Decoupled components** - Chart and table work independently
-- ✅ **Optimized performance** - Smart memoization and data caching  
+- ✅ **Optimized performance** - Smart memoization and data caching
 - ✅ **Type-safe** - Full TypeScript support
 - ✅ **Responsive design** - Works on any screen size
 
@@ -188,7 +195,7 @@ npm run lint
 
 ## 📝 Sample Data
 
-Want to try the tool immediately? Check out the `sample-data.json` file in the repository for example LLM response data you can upload.
+Want to try the tool immediately? Check out the `src/data/llm_responses.json` file in the repository for example LLM response data you can upload.
 
 ## 🤝 Contributing
 
