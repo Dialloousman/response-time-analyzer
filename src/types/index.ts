@@ -72,6 +72,8 @@ export interface FileUploadProps {
   onFileUpload: (data: LLMResponse[]) => void;
   isLoading: boolean;
   error: string | null;
+  setError: (error: string | null) => void;
+  setLoading: (loading: boolean) => void;
 }
 
 export interface ResponseTimeChartProps {

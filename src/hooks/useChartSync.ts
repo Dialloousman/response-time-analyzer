@@ -1,19 +1,18 @@
-import { useCallback } from 'react'
-import { useAppContext } from '@/context/AppContext'
+import { useState, useCallback } from 'react'
 
 export function useChartSync() {
-  const { state, selectItems } = useAppContext()
+  const [selectedItems, setSelectedItems] = useState<string[]>([])
 
   const handleChartSelection = useCallback((ids: string[]) => {
-    selectItems(ids)
-  }, [selectItems])
+    setSelectedItems(ids)
+  }, [])
 
   const handleTableSelection = useCallback((ids: string[]) => {
-    selectItems(ids)
-  }, [selectItems])
+    setSelectedItems(ids)
+  }, [])
 
   return {
-    selectedItems: state.selectedItems ?? [],
+    selectedItems,
     handleChartSelection,
     handleTableSelection
   }

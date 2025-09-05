@@ -1,15 +1,18 @@
-import { AppProvider, useAppContext } from "@/context/AppContext";
 import { FileUpload } from "@/components/FileUpload";
 import { ResponseTimeChart } from "@/components/ResponseTimeChart";
 import { DataTable } from "@/components/DataTable";
 import { ResetButton } from "@/components/ResetButton";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { useChartSync } from "@/hooks/useChartSync";
+import { useFileData } from "@/hooks/useFileData";
+import { useChartData } from "@/hooks/useChartData";
+import { useTableData } from "@/hooks/useTableData";
 
 function AppContent() {
-  const { state, uploadData, resetData } = useAppContext();
-  const { selectedItems, handleChartSelection, handleTableSelection } =
-    useChartSync();
+  const { responses, isLoading, error, hasData, uploadData, resetData, setError, setLoading } = useFileData();
+  const chartData = useChartData(responses);
+  const tableData = useTableData(responses);
+  const { selectedItems, handleChartSelection, handleTableSelection } = useChartSync();
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -18,15 +21,17 @@ function AppContent() {
         <div className="w-96 bg-white border-r border-gray-200 flex-shrink-0">
           <FileUpload
             onFileUpload={uploadData}
-            isLoading={state.isLoading}
-            error={state.error}
+            isLoading={isLoading}
+            error={error}
+            setError={setError}
+            setLoading={setLoading}
           />
         </div>
 
         {/* Right Panel - Chart and Table */}
         <div className="flex-1 flex flex-col">
           {/* Header with Reset Button */}
-          {state.hasData && (
+          {hasData && (
             <div className="bg-white border-b border-gray-200 p-4 flex-shrink-0">
               <div className="flex items-center justify-between">
                 <div>
@@ -34,20 +39,20 @@ function AppContent() {
                     Response Time Analysis
                   </h1>
                   <p className="text-sm text-gray-600 mt-1">
-                    Analyzing {state.responses.length} LLM responses
+                    Analyzing {responses.length} LLM responses
                   </p>
                 </div>
-                <ResetButton onReset={resetData} disabled={state.isLoading} />
+                <ResetButton onReset={resetData} disabled={isLoading} />
               </div>
             </div>
           )}
 
-          {state.hasData ? (
+          {hasData ? (
             <div className="flex-1 flex flex-col p-4 gap-4">
               {/* Chart Section - Top Half */}
               <div className="flex-1 min-h-0">
                 <ResponseTimeChart
-                  data={state.chartData}
+                  data={chartData}
                   selectedItems={selectedItems}
                   onItemSelect={handleChartSelection}
                 />
@@ -55,9 +60,9 @@ function AppContent() {
 
               {/* Table Section - Bottom Half */}
               <div className="flex-1 min-h-0">
-                {state.tableData && state.tableData.length > 0 ? (
+                {tableData && tableData.length > 0 ? (
                   <DataTable
-                    data={state.tableData}
+                    data={tableData}
                     selectedItems={selectedItems}
                     onSelectionChange={handleTableSelection}
                   />
@@ -89,9 +94,7 @@ function AppContent() {
 function App() {
   return (
     <ErrorBoundary>
-      <AppProvider>
-        <AppContent />
-      </AppProvider>
+      <AppContent />
     </ErrorBoundary>
   );
 }

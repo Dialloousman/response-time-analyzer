@@ -1,11 +1,9 @@
 import { useDropzone } from 'react-dropzone'
 import type { FileUploadProps } from '@/types/index'
 import { useFileUpload } from '@/hooks/useFileUpload'
-import { useAppContext } from '@/context/AppContext'
 
-export function FileUpload({ onFileUpload, isLoading, error }: FileUploadProps) {
+export function FileUpload({ onFileUpload, isLoading, error, setError, setLoading }: FileUploadProps) {
   const { handleFile } = useFileUpload()
-  const { setError, setLoading } = useAppContext()
 
   const onDrop = async (acceptedFiles: File[]) => {
     if (acceptedFiles.length === 0) return
