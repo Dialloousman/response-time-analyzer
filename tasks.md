@@ -3,6 +3,7 @@
 ## Project Overview
 
 Building a React application with Vite + TypeScript that visualizes LLM response time data with a two-pane UI:
+
 - **Left Pane**: Data upload page with drag-and-drop JSON file upload
 - **Right Pane**: Data visualization page with chart (top) and data grid (bottom) + reset functionality
 
