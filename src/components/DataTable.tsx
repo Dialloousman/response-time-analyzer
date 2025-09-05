@@ -173,7 +173,7 @@ export function DataTable({
               },
             },
             sorting: {
-              sortModel: [{ field: "timestamp", sort: "desc" }],
+              sortModel: [{ field: "timestamp", sort: "asc" }],
             },
           }}
           pageSizeOptions={[10, 25, 50, 100]}

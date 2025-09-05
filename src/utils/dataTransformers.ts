@@ -26,28 +26,38 @@ export const parseUploadedData = (jsonString: string): LLMResponse[] => {
 export const transformToChartData = (
   responses: LLMResponse[]
 ): ChartDataPoint[] => {
-  return responses.map((response) => ({
-    timestamp: response.timestamp,
-    responseTime: response.response_time_ms,
-    model: response.model,
-    status: response.status,
-    id: response.id,
-    total_tokens: response.total_tokens || 0,
-    formattedTime: new Date(response.timestamp).toLocaleString(),
-  }));
+  return responses
+    .sort(
+      (a, b) =>
+        new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+    )
+    .map((response) => ({
+      timestamp: response.timestamp,
+      responseTime: response.response_time_ms,
+      model: response.model,
+      status: response.status,
+      id: response.id,
+      total_tokens: response.total_tokens || 0,
+      formattedTime: new Date(response.timestamp).toLocaleString(),
+    }));
 };
 
 export const transformToTableData = (responses: LLMResponse[]): TableRow[] => {
-  return responses.map((response) => ({
-    id: response.id,
-    timestamp: response.timestamp,
-    responseTime: response.response_time_ms,
-    model: response.model,
-    total_tokens: response.total_tokens || 0,
-    status: response.status,
-    formattedTime: new Date(response.timestamp).toLocaleString(),
-    cost_usd: response.cost_usd,
-  }));
+  return responses
+    .sort(
+      (a, b) =>
+        new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+    )
+    .map((response) => ({
+      id: response.id,
+      timestamp: response.timestamp,
+      responseTime: response.response_time_ms,
+      model: response.model,
+      total_tokens: response.total_tokens || 0,
+      status: response.status,
+      formattedTime: new Date(response.timestamp).toLocaleString(),
+      cost_usd: response.cost_usd,
+    }));
 };
 
 export const validateResponseData = (
