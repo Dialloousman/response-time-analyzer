@@ -39,16 +39,21 @@ export function FileUpload({ onFileUpload, isLoading, error }: FileUploadProps) 
   })
 
   return (
-    <div className="h-full flex flex-col items-center justify-center p-8">
-      <div className="max-w-md w-full">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+    <div className="h-full flex flex-col p-6">
+      <div className="flex-shrink-0 mb-6">
+        <h2 className="text-xl font-bold text-gray-900">
           Upload Response Data
         </h2>
-        
+        <p className="text-sm text-gray-600 mt-1">
+          Upload JSON file with LLM response data
+        </p>
+      </div>
+      
+      <div className="flex-1 flex items-center justify-center">
         <div
           {...getRootProps()}
           className={`
-            border-2 border-dashed rounded-lg p-8 text-center transition-all duration-200 cursor-pointer
+            w-full border-2 border-dashed rounded-lg p-6 text-center transition-all duration-200 cursor-pointer
             ${isDragActive 
               ? 'border-blue-500 bg-blue-50' 
               : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
@@ -58,41 +63,41 @@ export function FileUpload({ onFileUpload, isLoading, error }: FileUploadProps) 
         >
           <input {...getInputProps()} />
           
-          <div className="space-y-4">
+          <div className="space-y-3">
             <div className="text-gray-600">
               {isLoading ? (
                 <div className="flex items-center justify-center space-x-2">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
-                  <span>Processing file...</span>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+                  <span className="text-sm">Processing...</span>
                 </div>
               ) : isDragActive ? (
-                <p>Drop your JSON file here...</p>
+                <p className="text-sm">Drop your JSON file here...</p>
               ) : (
                 <div>
-                  <p className="text-lg font-medium mb-2">Drag & drop your JSON file here</p>
-                  <p className="text-sm text-gray-500">or click to select</p>
+                  <p className="text-sm font-medium mb-1">Drag & drop JSON file</p>
+                  <p className="text-xs text-gray-500">or click to select</p>
                 </div>
               )}
             </div>
             
             {!isLoading && (
               <div className="text-xs text-gray-400">
-                Supported format: JSON files with LLM response data
+                JSON files with LLM response data
               </div>
             )}
           </div>
         </div>
+      </div>
 
-        {error && (
-          <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-md">
-            <p className="text-sm text-red-600">{error}</p>
-          </div>
-        )}
-        
-        <div className="mt-6 text-xs text-gray-500 text-center">
-          <p>Expected format: Array of response objects with fields like</p>
-          <p>id, timestamp, response_time_ms, model, etc.</p>
+      {error && (
+        <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-md flex-shrink-0">
+          <p className="text-sm text-red-600">{error}</p>
         </div>
+      )}
+      
+      <div className="mt-4 text-xs text-gray-500 flex-shrink-0">
+        <p className="mb-1">Expected format:</p>
+        <p>Array of response objects with id, timestamp, response_time_ms, model, etc.</p>
       </div>
     </div>
   )
