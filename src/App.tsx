@@ -1,21 +1,22 @@
-import { AppProvider, useAppContext } from '@/context/AppContext'
-import { FileUpload } from '@/components/FileUpload'
-import { ResponseTimeChart } from '@/components/ResponseTimeChart'
-import { DataTable } from '@/components/DataTable'
-import { ResetButton } from '@/components/ResetButton'
-import { ErrorBoundary } from '@/components/ErrorBoundary'
-import { useChartSync } from '@/hooks/useChartSync'
+import { AppProvider, useAppContext } from "@/context/AppContext";
+import { FileUpload } from "@/components/FileUpload";
+import { ResponseTimeChart } from "@/components/ResponseTimeChart";
+import { DataTable } from "@/components/DataTable";
+import { ResetButton } from "@/components/ResetButton";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { useChartSync } from "@/hooks/useChartSync";
 
 function AppContent() {
-  const { state, uploadData, resetData } = useAppContext()
-  const { selectedItems, handleChartSelection, handleTableSelection } = useChartSync()
+  const { state, uploadData, resetData } = useAppContext();
+  const { selectedItems, handleChartSelection, handleTableSelection } =
+    useChartSync();
 
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="flex h-screen">
         {/* Left Panel - Upload */}
         <div className="w-96 bg-white border-r border-gray-200 flex-shrink-0">
-          <FileUpload 
+          <FileUpload
             onFileUpload={uploadData}
             isLoading={state.isLoading}
             error={state.error}
@@ -36,10 +37,7 @@ function AppContent() {
                     Analyzing {state.responses.length} LLM responses
                   </p>
                 </div>
-                <ResetButton 
-                  onReset={resetData}
-                  disabled={state.isLoading}
-                />
+                <ResetButton onReset={resetData} disabled={state.isLoading} />
               </div>
             </div>
           )}
@@ -67,15 +65,19 @@ function AppContent() {
           ) : (
             <div className="flex-1 flex items-center justify-center">
               <div className="text-center text-gray-500">
-                <p className="text-lg font-medium">Upload data to get started</p>
-                <p className="text-sm mt-1">Select a JSON file from the panel on the left</p>
+                <p className="text-lg font-medium">
+                  Upload data to get started
+                </p>
+                <p className="text-sm mt-1">
+                  Select a JSON file from the panel on the left
+                </p>
               </div>
             </div>
           )}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function App() {
@@ -85,7 +87,7 @@ function App() {
         <AppContent />
       </AppProvider>
     </ErrorBoundary>
-  )
+  );
 }
 
-export default App
+export default App;
