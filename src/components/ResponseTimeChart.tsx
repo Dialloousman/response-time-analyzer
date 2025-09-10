@@ -127,6 +127,7 @@ export function ResponseTimeChart({
                 value: "Response Time (ms)",
                 angle: -90,
                 position: "insideLeft",
+                dy: 60,
               }}
             />
             <Tooltip content={<CustomTooltip />} />

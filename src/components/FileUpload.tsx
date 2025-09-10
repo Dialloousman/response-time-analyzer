@@ -30,7 +30,7 @@ export function FileUpload({
       } else if (result.data) {
         onFileUpload(result.data);
       }
-    } catch (err) {
+    } catch {
       setError("Failed to process file");
     } finally {
       setLoading(false);
