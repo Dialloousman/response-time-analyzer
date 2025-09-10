@@ -77,7 +77,7 @@ export const transformToTableData = (responses: LLMResponse[]): TableRow[] => {
  * Performs type checking and required field validation.
  */
 export const validateResponseData = (
-  response: unknown
+  response: any
 ): response is LLMResponse => {
   return (
     typeof response === "object" &&
@@ -89,48 +89,4 @@ export const validateResponseData = (
     typeof response.status === "string" &&
     ["success", "error", "timeout"].includes(response.status)
   );
-};
-
-/**
- * Calculates comprehensive statistics from LLM response data.
- * Provides counts, averages, and data range information.
- */
-export const getDataStats = (responses: LLMResponse[]) => {
-  if (responses.length === 0) {
-    return {
-      totalResponses: 0,
-      successCount: 0,
-      errorCount: 0,
-      timeoutCount: 0,
-      averageResponseTime: 0,
-      models: [],
-      dateRange: { start: null, end: null },
-    };
-  }
-
-  const successResponses = responses.filter((r) => r.status === "success");
-  const errorResponses = responses.filter((r) => r.status === "error");
-  const timeoutResponses = responses.filter((r) => r.status === "timeout");
-
-  const models = [...new Set(responses.map((r) => r.model))];
-  const timestamps = responses.map((r) => new Date(r.timestamp)).sort();
-
-  const averageResponseTime =
-    successResponses.length > 0
-      ? successResponses.reduce((sum, r) => sum + r.response_time_ms, 0) /
-        successResponses.length
-      : 0;
-
-  return {
-    totalResponses: responses.length,
-    successCount: successResponses.length,
-    errorCount: errorResponses.length,
-    timeoutCount: timeoutResponses.length,
-    averageResponseTime: Math.round(averageResponseTime),
-    models,
-    dateRange: {
-      start: timestamps[0] || null,
-      end: timestamps[timestamps.length - 1] || null,
-    },
-  };
 };
