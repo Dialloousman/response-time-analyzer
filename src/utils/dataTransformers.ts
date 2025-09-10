@@ -77,7 +77,7 @@ export const transformToTableData = (responses: LLMResponse[]): TableRow[] => {
  * Performs type checking and required field validation.
  */
 export const validateResponseData = (
-  response: any
+  response: unknown
 ): response is LLMResponse => {
   return (
     typeof response === "object" &&
